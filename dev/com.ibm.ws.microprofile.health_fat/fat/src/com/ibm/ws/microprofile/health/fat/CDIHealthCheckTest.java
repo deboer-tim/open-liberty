@@ -46,7 +46,8 @@ public class CDIHealthCheckTest extends LoggingTest {
         SHARED_SERVER.getLibertyServer().removeAllInstalledAppsForValidation();
 
         WebArchive testingApp = ShrinkWrap.create(WebArchive.class,
-                                                  "HealthCheckTestApp.war").addPackage("com.ibm.ws.microprofile.health.testapp");
+                                                  "HealthCheckTestApp.war")
+                        .addPackage("com.ibm.ws.microprofile.health.testapp");
         ShrinkHelper.exportToServer(SHARED_SERVER.getLibertyServer(), "dropins", testingApp);
         SHARED_SERVER.getLibertyServer().startServer();
     }
@@ -184,7 +185,7 @@ public class CDIHealthCheckTest extends LoggingTest {
         assertEquals("testCheckDOWNWithData", ((JsonObject) checks.get(0)).getString("name"));
         assertEquals("DOWN", ((JsonObject) checks.get(0)).getString("state"));
         JsonObject data = ((JsonObject) checks.get(0)).getJsonObject("data");
-        assertEquals("melted", data.getString("CPU"));
+        assertEquals("offline", data.getString("CPU"));
         assertEquals("failed", data.getString("Fan"));
 
         assertEquals(jsonResponse.getString("outcome"), "DOWN");
