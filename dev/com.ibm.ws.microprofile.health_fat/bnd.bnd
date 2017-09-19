@@ -19,7 +19,8 @@ src: \
 	test-applications/MultipleHealthCheckApp3/src, \
 	test-applications/HealthCheckNoAPIImplApp/src, \
 	test-applications/HealthCheckNoAnnotationApp/src, \
-	test-applications/HealthCheckExceptionApp/src
+	test-applications/HealthCheckExceptionApp/src, \
+	test-applications/HealthCheckNoCDIFat/src
 	
 javac.source: 1.8
 javac.target: 1.8

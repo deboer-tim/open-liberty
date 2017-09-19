@@ -61,16 +61,24 @@ public class MultipleChecksTest {
     public static void setUp() throws Exception {
 
         WebArchive testingApp1 = ShrinkWrap.create(WebArchive.class,
-                                                   "MultipleHealthCheckApp1.war").addPackages(true, "com.ibm.ws.microprofile.health.multiple.testapp1");
+                                                   "MultipleHealthCheckApp1.war")
+                        .addPackages(true, "com.ibm.ws.microprofile.health.multiple.testapp1");
         ShrinkHelper.exportToServer(server1, "dropins", testingApp1);
 
         WebArchive testingApp2 = ShrinkWrap.create(WebArchive.class,
-                                                   "MultipleHealthCheckApp2.war").addPackages(true, "com.ibm.ws.microprofile.health.multiple.testapp2");
+                                                   "MultipleHealthCheckApp2.war")
+                        .addPackages(true, "com.ibm.ws.microprofile.health.multiple.testapp2");
         ShrinkHelper.exportToServer(server1, "dropins", testingApp2);
 
         WebArchive testingApp3 = ShrinkWrap.create(WebArchive.class,
-                                                   "MultipleHealthCheckApp3.war").addPackages(true, "com.ibm.ws.microprofile.health.multiple.testapp3");
+                                                   "MultipleHealthCheckApp3.war")
+                        .addPackages(true, "com.ibm.ws.microprofile.health.multiple.testapp3");
         ShrinkHelper.exportToServer(server1, "dropins", testingApp3);
+
+        WebArchive hcnoCDIapp = ShrinkWrap.create(WebArchive.class,
+                                                  "HealthCheckNOCDIApp.war")
+                        .addPackages(true, "com.ibm.ws.microprofile.health.nocdi.testapp");
+        ShrinkHelper.exportToServer(server1, "dropins", hcnoCDIapp);
         server1.startServer();
     }
 
